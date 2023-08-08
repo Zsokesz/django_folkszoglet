@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html lang="hu">
+<head>
+
+   <meta charset="utf-8">
+  <title>Folkszöglet</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Mert bárki táncolhat.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Morvay Zsolt">
+  <meta name="generator" content="Folkszöglet weblap">
+  
+  <meta name="theme-name" content="folkszoglet" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'folkszoglet/images/favicon.png' %}" />
+  
+  <link rel="stylesheet" href="{% static 'folkszoglet/plugins/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'folkszoglet/plugins/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'folkszoglet/plugins/themify-icons/themify-icons.css' %}">
+
+  <link href="{% static 'folkszoglet/css/style.css' %}" rel="stylesheet">
+
+</head>
+<body>
+  
+
+  {% if request.user.is_authenticated %}
+  <header class="navigation fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand font-tertiary h3" href="/"><img src="{% static 'folkszoglet/images/logo.png' %}" alt="Myself"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Főoldal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rolunk">Rólunk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tancok">Táncok</a>
+         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+
+{% else %}
+
+  <header class="navigation fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand font-tertiary h3" href="/"><img src="{% static 'folkszoglet/images/logo.png' %}" alt="Myself"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Főoldal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rolunk">Rólunk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tancok">Táncok</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bejelentkezes">Bejelentkezés</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+{% endif %}
+
+<section class="page-title-alt bg-primary position-relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-white font-tertiary">Rólunk</h1>
+      </div>
+    </div>
+  </div>
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-bg-top.png' %}" alt="illustrations" class="bg-shape-1 w-100">
+  <img src="{% static 'folkszoglet/images/illustrations/dots-group-sm.png' %}" alt="illustrations" class="bg-shape-2">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-yellow.png' %}" alt="illustrations" class="bg-shape-3">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-orange.png' %}" alt="illustrations" class="bg-shape-4">
+  <img src="{% static 'folkszoglet/images/illustrations/dots-group-cyan.png' %}" alt="illustrations" class="bg-shape-5">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-cyan-lg.png' %}" alt="illustrations" class="bg-shape-6">
+</section>
+
+<section class="section pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <p>Számos archív felvétel maradt fenn minden tályegységből, ami megmutatja milyen sokszínű a magyar néptánc.</p>
+        <p>Az oldal célja, hogy ezeket a felvételeket összegyűjtse, csoportosítsa és egyszerűen elérhetővé tegye mindenki számára, aki kívácsi rá.</p>
+        <p>A felvételek általi tánctanulás egy létező módszer, de sokan azért nem kezdenek bele, mert nem találnak olyan gyűjtéseket, ami számukra releváns. Remélhetőleg ez az oldal segít abban, hogy akit eddig csak ez tartott vissza, mostmár ne hátráljon meg.</p>
+      </div>
+      <div class="col-md-4 text-center drag-lg-top">
+        <div class="shadow-down mb-4">
+          <img src="{% static 'folkszoglet/images/about/author.jpg' %}" alt="author" class="img-fluid w-100 rounded-lg border-thick border-white">
+        </div>
+        <h4>A képen a Generáció táncegyüttes látható.</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-dark footer-section">
+  <div class="section">
+    </div>
+  </div>
+  <div class="border-top text-center border-dark py-5">
+    <p class="mb-0 text-light">Copyright &copy;<script>
+        var CurrentYear = new Date().getFullYear()
+        document.write(CurrentYear)
+      </script> Ötletgazda és elkészítő <a class="text-white-50" href="/">Morvay Zsolt</a></p>
+  </div>
+</footer>
+
+<script src="{% static 'folkszoglet/plugins/jQuery/jquery.min.js' %}"></script>
+<script src="{% static 'folkszoglet/plugins/bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'folkszoglet/plugins/slick/slick.min.js' %}"></script>
+<script src="{% static 'folkszoglet/plugins/shuffle/shuffle.min.js' %}"></script>
+<script src="{% static 'folkszoglet/js/script.j' %}s"></script>
+
+</body>
+</html>

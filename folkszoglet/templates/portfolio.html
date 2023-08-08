@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+
+<style type="text/css">
+
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.post-container{
+    margin-top: 20px;
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+  .search-bar{
+		max-width: 500px;
+		width: 100%;
+	}
+	form{
+		width: 100%;
+	}
+  .filter-link {
+    margin-bottom: 12px;
+    margin-top: 12px;
+    width: 265px;
+  }
+</style>
+
+<html lang="hu">
+<head>
+
+
+  <meta charset="utf-8">
+  <title>Folkszöglet</title>
+
+
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Mert bárki táncolhat.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Morvay Zsolt">
+  <meta name="generator" content="Folkszöglet weblap">
+ 
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'folkszoglet/images/favicon.png' %}" />
+  <link rel="stylesheet" href="{% static 'folkszoglet/plugins/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'folkszoglet/plugins/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'folkszoglet/plugins/themify-icons/themify-icons.css' %}">
+  <link href="{% static 'folkszoglet/css/style.css' %}" rel="stylesheet">
+
+
+</head>
+<body>
+  
+
+  {% if request.user.is_authenticated %}
+  <header class="navigation fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand font-tertiary h3" href="/"><img src="{% static 'folkszoglet/images/logo.png' %}" alt="Myself"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav ml-auto">
+          <div class="search-bar mt-sm-2 mr-2">
+            <form method="get">
+              <input class="form-control"  type="text" name="q" id="id_q" placeholder="Keresés...">
+            </form>
+            </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Főoldal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rolunk">Rólunk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tancok">Táncok</a>
+         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+  <script type="text/javascript">
+    document.getElementById("id_q").value = "{{query}}"
+  </script>
+
+{% else %}
+
+  <header class="navigation fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand font-tertiary h3" href="/"><img src="{% static 'folkszoglet/images/logo.png' %}" alt="Myself"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav ml-auto">
+          <div class="search-bar mt-sm-2 mr-2">
+            <form method="get">
+              <input class="form-control"  type="text" name="q" id="id_q" placeholder="Keresés">
+            </form>
+            </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Főoldal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rolunk">Rólunk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tancok">Táncok</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bejelentkezes">Bejelentkezés</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+  <script type="text/javascript">
+    document.getElementById("id_q").value = "{{query}}"
+  </script>
+{% endif %}
+
+
+<section class="page-title bg-primary position-relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="text-white font-tertiary">Táncok</h1>
+      </div>
+    </div>
+  </div>
+  <img src="{% static 'folkszoglet/images/illustrations/page-title.png' %}" alt="illustrations" class="bg-shape-1 w-100">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-pink-round.png' %}" alt="illustrations" class="bg-shape-2">
+  <img src="{% static 'folkszoglet/images/illustrations/dots-cyan.png' %}" alt="illustrations" class="bg-shape-3">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-orange.png' %}" alt="illustrations" class="bg-shape-4">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-yellow.png' %}" alt="illustrations" class="bg-shape-5">
+  <img src="{% static 'folkszoglet/images/illustrations/dots-group-cyan.png' %}" alt="illustrations" class="bg-shape-6">
+  <img src="{% static 'folkszoglet/images/illustrations/leaf-cyan-lg.png' %}" alt="illustrations" class="bg-shape-7">
+</section>
+
+<div class="container">
+	<div class="row">
+
+	
+		<div class="left-column col-lg-7 offset-lg-1">
+
+	
+			<div class="d-lg-none mb-3">
+				<div class="card m-auto d-flex flex-column p-3">
+          <div class="filter-selector">
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=csardas">Csárdás</a>
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=verbunk">Verbunk</a>
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=legenyes">Legényes</a>
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=polgari">Polgári táncok</a>
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=negyes">Négyes táncok</a>
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=eszkozos">Eszközös táncok</a>
+            <a class="btn btn-primary filter-link" href="/tancok/?filter=ugros">Ugrós táncok</a>
+        </div>
+					<p class="lead">Válassz tánctípust.</p>
+					<p class="m-auto"><a class="btn btn-primary" href="/video/feltolt">Felvétel feltöltése</a></p>
+				</div>
+			</div>
+		
+
+      {% if posts %}
+			{% for post in posts %}
+        {% if filter|length %}
+          {% if post.tanctipus == filter %}
+          <div class="post-container">
+            {% include 'video/snippets/post_snippet.html' with post=post %}
+          </div>
+          {% endif %}
+        {% else %}
+        <div class="post-container">
+          {% include 'video/snippets/post_snippet.html' with post=post %}
+        </div>
+        {% endif %}
+			{% endfor %}
+    {% else %}
+    <div class="post-container">
+      {% include 'video/snippets/post_snippet.html' with query=query %}
+    </div>
+    {% endif %}
+	  </div>
+	
+		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+      <div class="filter-selector">
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=csardas">Csárdás</a>
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=verbunk">Verbunk</a>
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=legenyes">Legényes</a>
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=polgari">Polgári táncok</a>
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=negyes">Négyes táncok</a>
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=eszkozos">Eszközös táncok</a>
+          <a class="btn btn-primary filter-link" href="/tancok/?filter=ugros">Ugrós táncok</a>
+      </div>
+			<div class="card create-post-bar d-flex flex-column p-3">
+				<p class="lead">Válassz tánctípust.</p>
+				<p class="m-auto"><a class="btn btn-primary" href="/video/feltolt">Felvétel feltöltése</a></p>
+			</div>
+		
+		</div>
+	
+
+	</div>
+</div>
+
+<footer class="bg-dark footer-section">
+  <div class="section">
+    </div>
+  </div>
+  <div class="border-top text-center border-dark py-5">
+    <p class="mb-0 text-light">Copyright &copy;<script>
+        var CurrentYear = new Date().getFullYear()
+        document.write(CurrentYear)
+      </script> Ötletgazda és elkészítő <a class="text-white-50" href="/">Morvay Zsolt</a></p>
+  </div>
+</footer>
+
+<script src="{% static 'folkszoglet/plugins/jQuery/jquery.min.js' %}"></script>
+<script src="{% static 'folkszoglet/plugins/bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'folkszoglet/plugins/slick/slick.min.js' %}"></script>
+<script src="{% static 'folkszoglet/plugins/shuffle/shuffle.min.js' %}"></script>
+
+<script src="{% static 'folkszoglet/js/script.js' %}"></script>
+
+</body>
+</html>
